@@ -62,7 +62,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-
         <!--
         o atributo "parentActivityName" so existe para oandroid 4.0 ou superior
         e ele define a a ativty pai na hierarquia para voltar a navegac ao caso o usuariopressione o botao de UP NAVEGATION.
