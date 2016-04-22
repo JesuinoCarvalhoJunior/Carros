@@ -3,26 +3,89 @@
     package="com.projetolivro.junior_carvalho.carros">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Escrever r na cartao de memoria externo SD CARD -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Ler na cartao de memoria externo SD CARD -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- Acesso a camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!-- Acesso ao calendario -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <!-- Acesso a localizacao -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Acesso a agenda de contados -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
+        android:name=".CarrosApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar"
-        android:name=".CarrosApplication"
-        >
+        android:theme="@style/AppTheme">
 
-
-        <activity android:name=".activity.MainActivity"
-             android:theme="@style/AppTheme.NoActionBar.NavDrawer">
+        <activity
+            android:name=".activity.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar.NavDrawer">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <activity
+            android:name=".activity.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar.NavDrawer" />
+
+        <activity
+            android:name=".activity.CarroActivity"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".activity.CarrosActivity"
+            android:parentActivityName=".activity.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".activity.prefs.ConfiguracoesActivity"
+            android:label="Configuralçies">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+
+        <!--
+        o atributo "parentActivityName" so existe para oandroid 4.0 ou superior
+        e ele define a a ativty pai na hierarquia para voltar a navegac ao caso o usuariopressione o botao de UP NAVEGATION.
+        Por questao de compatibilidade a tag <META DATA> tambem é configuada co mmesmo proposito
+        -->
+        <activity
+            android:name=".activity.prefs.ConfiguracoesV11Activity"
+            android:label="Configurações"
+            android:parentActivityName=".activity.MainActivity"
+            android:theme="@style/AppTheme.Material">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.MainActivity" />
+        </activity>
+        <!--
+        <activity android:name=".activity.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        -->
+    </application>
 
 </manifest>
