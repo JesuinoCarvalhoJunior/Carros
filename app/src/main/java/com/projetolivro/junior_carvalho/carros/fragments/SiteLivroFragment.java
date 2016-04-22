@@ -18,7 +18,7 @@ import com.projetolivro.junior_carvalho.carros.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SiteLivroFragment extends BaseFragments {
+public class SiteLivroFragment extends BaseFragment {
 
     private static final String URL_SOBRE = "http://www.livroiphone.com.br"; //"http://www.livroandroid.com.br/sobre.html";
     private WebView webview;
@@ -49,8 +49,11 @@ public class SiteLivroFragment extends BaseFragments {
                 R.color.refresh_progress_3
         );
 
+
         return view;
     }
+
+
 
     private SwipeRefreshLayout.OnRefreshListener OnRefreshListener() {
         return new SwipeRefreshLayout.OnRefreshListener() {
@@ -58,6 +61,8 @@ public class SiteLivroFragment extends BaseFragments {
             public void onRefresh() {
                 // atualiza pagina
                 webview.reload();
+
+
             }
 
         };
@@ -85,7 +90,7 @@ public class SiteLivroFragment extends BaseFragments {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 Log.d("Livro", "Webview url: " + url);
                 if (url != null && url.endsWith("autor.html")) {
-                    AboutDialog.ShowAbout(getFragmentManager());
+                    AboutDialog.showAbout(getFragmentManager());
                     //retorna true para informar que interceptou o evento
                     return true;
                 }

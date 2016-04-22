@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.projetolivro.junior_carvalho.carros.domain.Carro;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -11,5 +12,17 @@ import java.util.List;
  */
 public interface ICarroService {
 
-     List<Carro> getCarros(Context context, int tipo);
+
+
+ // List<Carro> getCarross(Context context, int tipo) throws IOException;
+
+  //  List<Carro> getCarros(Context context, String tipo) throws IOException;
+
+
+
+
+
+
+
+
 }

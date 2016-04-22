@@ -7,4 +7,12 @@
     android:minHeight="?attr/actionBarSize"
     android:theme="@style/AppTheme.AppBarOverlay"
     app:popupTheme="@style/AppTheme.PopupOverlay"
+    app:layout_scrollFlags="scroll|enterAlways"
+
+
     />
+    <!--
+   para fazer efeito de rolagem na toolbas
+   foi add a seguinte linha
+    app:layout_scrollFlags="scroll|enterAlways"
+  -->

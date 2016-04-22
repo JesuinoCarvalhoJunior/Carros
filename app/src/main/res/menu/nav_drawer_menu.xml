@@ -35,5 +35,18 @@
             android:id="@+id/nav_item_settings"
             android:icon="@drawable/ic_drawer_settings"
             android:title="@string/configuracoes" />
+
+
+        <!-- SOBRE APARELHO -->
+        <item
+            android:id="@+id/nav_item_sobreaparelho"
+            android:icon="@drawable/ic_info_black_36dp"
+            android:title="@string/sobre_aparelho" />
+
+        <!-- SAIR DA APLICACAO -->
+        <item
+            android:id="@+id/nav_item_sairaplicacao"
+            android:icon="@drawable/ic_exit_to_app_36pt"
+            android:title="@string/sair" />
     </group>
 </menu>

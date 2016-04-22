@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!-- layout utilizado para abri outro layout da esquerda para direita (Menu lateral)
+ele é formado por duas partes, o conteudo e a lista de itens
+-->
 <android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,20 +12,71 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <!-- BLOCO 1 = CONTEUDO DA TELA    XMLNS:ANDROID="HTTP://SCHEMAS.ANDROID.COM/APK/RES/ANDROID"-->
-    <LinearLayout
+    <!-- contem todos os principais elementos para poder gerenciar a rolagem
+    e efeito de rolagem
+    -->
+    <android.support.design.widget.CoordinatorLayout
+
+        android:id="@+id/coordinatorlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <!-- TOOLBAR -->
-        <include layout="@layout/include_toolbar" />
-        <!-- CONTEUDO : LAYOUT DE MARCACAO PARA FRAGMENS -->
-        <FrameLayout
-            android:id="@+id/container"
+        android:layout_height="match_parent">
+
+        <!--subclasse de linear layout, deve ficar  dentro do coordinatorlayout
+        objtivo é criar a app bar, espaco em qe fica a  toolbar e componentes como as tabs
+        appbarlayout contra o scroll dos filhos por meio de flags configuraveis,
+        permitindo efeito de expandir e diminuir conforme rolagem
+        o efeito de rolagem é executado quando usado a flag
+        layout_scrollFlags
+        -->
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </FrameLayout>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+            <!-- TOOLBAR -, deve icar dentro appbarlayout para que o comportamento
+            seja gerenciado automaticamente-->
+            <include layout="@layout/include_toolbar" />
+
+            <!-- mesmo comportamento da appbarlayout,  a rolagem da tela afeta as tabs
+             o aplicativo podera escolher entre deixar as tabes visiveis ou escondê-pas totalmente
+             -->
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|enterAlways" />
+            <!--
+           para fazer efeito de rolagem na toolbas
+           foi add a seguinte linha
+            app:layout_scrollFlags="scroll|enterAlways"
+          -->
+
+        </android.support.design.widget.AppBarLayout>
+
+
+        <!--os prinicipais componentes da view precisam reagir a roalgem
+         porisso foi adicoinado aqui o viewpage (antes fica na carrostabgragment)-->
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/accent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <!-- Adiconar Floating Action Button, idem ao viewpage, (antes fica na carrosfragments)-->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:src="@android:drawable/ic_input_add"
+            android:tint="#fff000" />
+    </android.support.design.widget.CoordinatorLayout>
+
 
     <!-- BLOCO 2 = NAV DRAWER -->
     <android.support.design.widget.NavigationView

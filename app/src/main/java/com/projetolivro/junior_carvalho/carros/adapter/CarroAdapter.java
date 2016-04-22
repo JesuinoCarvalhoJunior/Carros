@@ -11,8 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.projetolivro.junior_carvalho.carros.R;
-import com.projetolivro.junior_carvalho.carros.adapter.Interface.CarroOnClickListener;
 import com.projetolivro.junior_carvalho.carros.domain.Carro;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Created by Junior_Carvalho on 27/03/2016.
  */
-public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHolder> implements CarroOnClickListener {
+public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHolder> {
 
     protected static final String TAG = "livroandroid";
     private final List<Carro> carros;
@@ -53,7 +53,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
         holder.progress.setVisibility(View.VISIBLE);
 
         // faz download da foto e mostra o progressbar
-        Picasso.with(context).load(c.urlfoto).fit().into(holder.img, new com.squareup.picasso.Callback() {
+        Picasso.with(context).load(c.urlFoto).fit().into(holder.img, new Callback() {
 
             // metodos da interface Callback
             @Override
@@ -64,7 +64,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
 
             @Override
             public void onError() {
-                holder.progress.setVisibility(View.VISIBLE);
+                holder.progress.setVisibility(View.GONE);
             }
         });
         // click
@@ -73,24 +73,25 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
                 @Override
                 public void onClick(View v) {
                     // a variavel position é final
-                    //carroOnClickListener.onClickCarro(holder.itemView, position);
-                    onClickCarro(holder.itemView, position);
+                    carroOnClickListener.onClickCarro(holder.itemView, position);
+                    // carroOnClickListener.onClickCarro(holder.itemView, position);
                 }
             });
         }
     }
+/*
 
     // implementa interface
-    public void onClickCarro(View view, int idx) {
+    public void CarroOnClickListener(View view, int idx) {
 
     }
+*/
 
-/*
-// remover a interface CarroOnClickListener  e usar este metodo
+
+    // remover a interface CarroOnClickListener  e usar este metodo
     public interface CarroOnClickListener {
         public void onClickCarro(View view, int idx);
     }
-*/
 
     // viewholder com as view
     public static class CarrosViewHolder extends RecyclerView.ViewHolder {

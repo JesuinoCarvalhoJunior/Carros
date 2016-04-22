@@ -1,14 +1,21 @@
 package com.projetolivro.junior_carvalho.carros.activity;
 
-import android.support.v7.app.AppCompatActivity;
+import android.os.Environment;
+import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.projetolivro.junior_carvalho.carros.R;
+import com.projetolivro.junior_carvalho.carros.adapter.TabsAdapter;
 import com.projetolivro.junior_carvalho.carros.fragments.AboutDialog;
-import com.projetolivro.junior_carvalho.carros.fragments.CarroTabFragment;
-import com.projetolivro.junior_carvalho.carros.fragments.CarrosFragment;
+import com.projetolivro.junior_carvalho.carros.utils.PrefsUtils;
+
+import livroandroid.lib.utils.Prefs;
 
 public class MainActivity extends BaseActivity {
 
@@ -24,8 +31,34 @@ public class MainActivity extends BaseActivity {
        //  replaceFragment(CarrosFragment.newInstance(R.string.carros));
 
         // exibir as 3 tabs ao inicializar
-        replaceFragment(new CarroTabFragment());
+      // naao precisa mais
+      //  replaceFragment(new CarroTabFragment());
 
+        //exibir tabs
+        setupViewPagerTabs();
+
+
+        // FAB
+        final boolean chk = PrefsUtils.isCheckPushOn(this);
+        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+
+               if (chk){
+                   snack(v, "As notificações estão habilitadas!");
+               }   else
+
+                snack(v, "Nenhum evento implementado!");
+            }
+        });
+
+
+        Log.d("tag", "getfiledir > : " + getFilesDir());
+        Log.d("tag", "getfiledir > : " + getFileStreamPath("arquivo.txt"));
+        Log.d("tag", "getfiledir > : " + getExternalFilesDir(Environment.DIRECTORY_DCIM));
+        Log.d("tag", "getfiledir > : " + getCacheDir());
     }
 
 
@@ -39,11 +72,62 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
         if (id == R.id.action_about){
-            AboutDialog.ShowAbout(getSupportFragmentManager());
+            AboutDialog.showAbout(getSupportFragmentManager());
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+ // configura TABs e ViewPager
+     private void setupViewPagerTabs(){
+
+         //ViewPager
+         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+         // limite indica para viewpager manter 2 tabs a mais alem da qe esta sendo visualizda
+         viewPager.setOffscreenPageLimit(2);
+         //
+         viewPager.setAdapter(new TabsAdapter(getContext(), getSupportFragmentManager()));
+
+         //TABs
+         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
+         //cria as tabes com o mesmo adapter utilisado pelo viewpager
+         tabLayout.setupWithViewPager(viewPager);
+         int cor = ContextCompat.getColor(getContext(), R.color.white);
+         // cor do texto = branca,
+         // cor de fundo azul ou (Laranja) foi definida no layout // "@color/primary"
+         // ou poderia utiliar para cor do layout
+         // tabLayout.setBackgroundColor(Color.BLUE);
+
+         // primeiro parametro = cor do texto, segundo cor do texto referente aba selecionada
+         //  tabLayout.setTabTextColors(Color.BLACK,Color.YELLOW);
+         tabLayout.setTabTextColors(cor, cor);
+         // muda a cor da barra inferior da tab selecionada
+         //   tabLayout.setSelectedTabIndicatorColor(Color.GREEN);
+
+
+         //region Description - Configura a utlima tab selecionada pelo usuario
+         int tabIdx = Prefs.getInteger(getContext(), "tabIdx");
+         viewPager.setCurrentItem(tabIdx);
+         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+             @Override
+             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+             }
+             @Override
+             public void onPageSelected(int position) {
+               //salva o indice da pagina/tab selecionada
+                 Prefs.setInteger(getContext(),"tabIdx", viewPager.getCurrentItem());
+             }
+             @Override
+             public void onPageScrollStateChanged(int state) {
+
+             }
+         });
+         //endregion
+
+
+
+     }
 
 
 }

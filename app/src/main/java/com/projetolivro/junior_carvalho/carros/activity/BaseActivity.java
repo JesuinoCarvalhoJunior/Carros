@@ -1,22 +1,28 @@
 package com.projetolivro.junior_carvalho.carros.activity;
 
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import livroandroid.lib.utils.NavDrawerUtil;
 import com.projetolivro.junior_carvalho.carros.R;
-import com.projetolivro.junior_carvalho.carros.fragments.CarroTabFragment;
-import com.projetolivro.junior_carvalho.carros.fragments.CarrosFragment;
-import com.projetolivro.junior_carvalho.carros.fragments.SiteLivroFragment;
+import com.projetolivro.junior_carvalho.carros.activity.prefs.ConfiguracoesActivity;
+import com.projetolivro.junior_carvalho.carros.activity.prefs.ConfiguracoesV11Activity;
+import com.projetolivro.junior_carvalho.carros.utils.SoftHardware;
+
+import livroandroid.lib.utils.AndroidUtils;
 
 /**
  * Created by Junior_Carvalho on 25/03/2016.
@@ -27,17 +33,33 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
 
     protected DrawerLayout drawerLayout;
 
-    // metodo ativa a ToolBar
+    // Atualiza os dados do header do Navigation View
+    // Adicionar no cabecalho - Imagem + Nome + Email
+    public static void setNavViewValues(NavigationView navView, int nome, int email, int img) {
+        View headerView = navView.getHeaderView(0);
+        TextView tNome = (TextView) headerView.findViewById(R.id.tUserName);
+        TextView tEmail = (TextView) headerView.findViewById(R.id.tUserEmail);
+        ImageView imgView = (ImageView) headerView.findViewById(R.id.imgUserPhoto);
+        tNome.setText(nome);
+        tEmail.setText(email);
+        imgView.setImageResource(img);
+    }
+
+    /**
+     A configuracao do menu lateral é feito aqi na base activity para
+      que seja possivel reutilizar o codigo no projeto
+    *
+     configura nav drawer
+    <p>Metodo ativa a ToolBar</p>
+
+    */
+
     protected void setUpToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
     }
-
-    // a configuracao do menu lateral é feito aqi na base activity para
-    // que seja possivel reutilizar o codigo no projeto
-    // configura nav drawer
 
     protected void setupNavDrawer() {
         final ActionBar actionBar = getSupportActionBar();
@@ -58,15 +80,15 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
                     R.string.nav_drawer_username,
                     R.string.nav_drawer_email);*/
 
-            if (navigationView != null && drawerLayout != null) {
-               // Atualiza os dados do header do Navigation View
-                setNavViewValues(navigationView,
-                        R.string.nav_drawer_username,
-                        R.string.nav_drawer_email,
-                        R.drawable.jr);
+        if (navigationView != null && drawerLayout != null) {
+            // Atualiza os dados do header do Navigation View
+            setNavViewValues(navigationView,
+                    R.string.nav_drawer_username,
+                    R.string.nav_drawer_email,
+                    R.drawable.jr);
 
 
-                // trata evento de clique no menu
+            // trata evento de clique no menu
             navigationView.setNavigationItemSelectedListener(
                     new NavigationView.OnNavigationItemSelectedListener() {
                         @Override
@@ -83,56 +105,79 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
         }
     }
 
-    // Atualiza os dados do header do Navigation View
-    // Adicionar no cabecalho - Imagem + Nome + Email
-    public static void setNavViewValues(NavigationView navView, int nome, int email, int img) {
-        View headerView = navView.getHeaderView(0);
-        TextView tNome = (TextView) headerView.findViewById(R.id.tUserName);
-                TextView tEmail = (TextView) headerView.findViewById(R.id.tUserEmail);
-                ImageView imgView = (ImageView) headerView.findViewById(R.id.imgUserPhoto);
-                tNome.setText(nome);
-                tEmail.setText(email);
-                imgView.setImageResource(img);
-        }
-// trata evento nos itens do menu lateral
-
+    // trata evento nos itens do menu lateral
     private void onNavDrawerItemSelected(MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
 
             case R.id.nav_item_carros_todos:
                 // mostrar as 3 tabs classico, esportivos e luxo
-                replaceFragment(new CarroTabFragment());
-                toast("clicou em carros");
+                //       replaceFragment(new CarroTabFragment());
+                // nao implementa nada pois somente a main activity possui menu lateral
+                toast("clicou em carros - todos os carros");
                 break;
             case R.id.nav_item_carros_classicos:
-                replaceFragment(CarrosFragment.newInstance(R.string.classicos));
-                toast("carros classicos");
+
+                Intent intent = new Intent(getContext(), CarrosActivity.class);
+                intent.putExtra("tipo", R.string.classicos);
+                startActivity(intent);
+                //replaceFragment(CarrosFragment.newInstance(R.string.classicos));
+                //   toast("carros classicos");
                 break;
             case R.id.nav_item_carros_esportivos:
-                replaceFragment(CarrosFragment.newInstance(R.string.esportivos));
+                //  replaceFragment(CarrosFragment.newInstance(R.string.esportivos));
+
+                Intent intentEsport = new Intent(getContext(), CarrosActivity.class);
+                intentEsport.putExtra("tipo", R.string.esportivos);
+                startActivity(intentEsport);
+
                 toast("carros esportivos");
                 break;
             case R.id.nav_item_carros_luxo:
-                replaceFragment(CarrosFragment.newInstance(R.string.luxo));
+                //   replaceFragment(CarrosFragment.newInstance(R.string.luxo));
+
+
+                Intent intentLux = new Intent(getContext(), CarrosActivity.class);
+                intentLux.putExtra("tipo", R.string.luxo);
+                startActivity(intentLux);
+
                 toast("carros luxo");
                 break;
             case R.id.nav_item_site_livro:
-                replaceFragment(new SiteLivroFragment());
-                snack(drawerLayout, "site livro");
+                // fazer o mesmo conveito para este menu (ver codigo do livro)
+                // startActivity(new Intent(getContext(), SiteLivroActivity.class));
+                //replaceFragment(new SiteLivroFragment());
+                // snack(drawerLayout, "site livro");
+
                 break;
             case R.id.nav_item_settings:
-                toast("configuracoes");
+                //toast("configuracoes");
+
+                //chama activity conforme versao do android
+                if (AndroidUtils.isAndroid3Honeycomb()) {
+                    startActivity(new Intent(this, ConfiguracoesV11Activity.class));
+                } else {
+                    startActivity(new Intent(this, ConfiguracoesActivity.class));
+                }
+
                 break;
-               }
+            case R.id.nav_item_sobreaparelho:
+                InfoHardsoftware();
+                break;
+
+            case R.id.nav_item_sairaplicacao:
+                onBackPressed();
+                break;
+
+        }
     }
+
     // adiciona o fragment ao cenro da tela
     // esse metodo encapsula o codigo para adicionar um fragment dinamicamente ao layout
     //replace = substituir o fragment
-    protected void replaceFragment(Fragment frag){
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, frag, "TAG").commit();
+    protected void replaceFragment(Fragment frag) {
+        //  getSupportFragmentManager().beginTransaction().replace(R.id.container, frag, "TAG").commit();
     }
-
 
 
     @Override
@@ -149,6 +194,7 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     // abre o menu lateral
     protected void openDrawer() {
         if (drawerLayout != null) {
@@ -163,6 +209,67 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
         }
     }
 
+
+    private boolean InfoHardsoftware() {
+        StringBuffer buf = new StringBuffer();
+        buf.append("<b>VERSION.RELEASE</b><br />" + Build.VERSION.RELEASE + "<br />");
+        buf.append("<b>VERSION.INCREMENTAL</b><br />" + Build.VERSION.INCREMENTAL + "<br />");
+        buf.append("<b>VERSION.SDK_INT</b><br />" + Build.VERSION.SDK_INT + "<br />");
+        buf.append("<b>VERSION.CODENAME</b><br />" + Build.VERSION.CODENAME + "<br />");
+        buf.append("<b>BOARD</b><br />" + Build.BOARD + "<br />");
+        buf.append("<b>BRAND</b><br />" + Build.BRAND + "<br />");
+        buf.append("<b>DEVICE</b><br />" + Build.DEVICE + "<br />");
+        buf.append("<b>FINGERPRINT</b><br />" + Build.FINGERPRINT + "<br />");
+        buf.append("<b>HOST</b><br />" + Build.HOST + "<br />");
+        buf.append("<b>ID</b><br />" + Build.ID + "<br />");
+        buf.append("<b>MODELO</b><br />" + Build.MODEL + "<br />");
+        buf.append("<b>BOOT</b><br />" + Build.BOOTLOADER + "<br />");
+        buf.append("<b>HARDWARE</b><br />" + Build.HARDWARE + "<br />");
+        buf.append("<b>SERIAL</b><br />" + Build.SERIAL + "<br />");
+
+        SoftHardware.showStringDialog(this.getContext(), "System Info", Html.fromHtml(buf.toString()));
+        return true;
+    }
+
+
+/*@Override
+    public void onBackPressed() {
+    SoftHardware.alertDialog1(this.getContext(),"Alerta", "Deseja Sair?" );
+
+}*/
+
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+        alertDialogBuilder.setTitle("Alerta");
+        alertDialogBuilder.setIcon(R.drawable.ic_info_black_36dp);
+
+        alertDialogBuilder.setMessage("Deseja realmente sair?").setCancelable(false).setPositiveButton("Sim",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        sairAplicacao();
+                    }
+                })
+                .setNegativeButton("Não",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    public void sairAplicacao() {
+        //- ACTION_MAIN com a categoria CATEGORY_HOME = Lançamento da tela inicial.
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        //Se definido, esta atividade se tornará o começo de uma nova tarefa nesta pilha de histórico.
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //   startActivity(intent);
+        finish();
+    }
 }
 
 

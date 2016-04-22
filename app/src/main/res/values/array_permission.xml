@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Sera utilizado da seguinte forma:
+      PermissionUtils.validate(this, 0, permissions);
+    -->
+    <string-array name="array_permission">
+        <item>@string/INTERNET</item>
+        <item>@string/ACCESS_NETWORK_STATE</item>
+        <item>@string/WRITE_EXTERNAL_STORAGE</item>
+        <item>@string/READ_EXTERNAL_STORAGE</item>
+        <item>@string/CAMERA</item>
+        <item>@string/READ_CALENDAR</item>
+        <item>@string/ACCESS_FINE_LOCATION</item>
+        <item>@string/READ_CONTACTS</item>
+    </string-array>
+</resources>

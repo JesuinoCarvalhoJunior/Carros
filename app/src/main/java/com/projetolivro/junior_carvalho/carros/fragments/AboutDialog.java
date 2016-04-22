@@ -25,7 +25,7 @@ public class AboutDialog extends DialogFragment {
 
     // metodo utilitario para mostrar o dialog
 
-    public static void ShowAbout(android.support.v4.app.FragmentManager fm) {
+    public static void showAbout(android.support.v4.app.FragmentManager fm) {
         FragmentTransaction ft = fm.beginTransaction();
         Fragment prev = fm.findFragmentByTag("dialog_about");
 
