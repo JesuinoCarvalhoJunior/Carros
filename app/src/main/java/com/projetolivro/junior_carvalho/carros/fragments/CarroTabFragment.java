@@ -1,5 +1,6 @@
 package com.projetolivro.junior_carvalho.carros.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
@@ -12,6 +13,8 @@ import com.projetolivro.junior_carvalho.carros.R;
 import com.projetolivro.junior_carvalho.carros.adapter.TabsAdapter;
 
 import livroandroid.lib.fragment.BaseFragment;
+
+import static com.projetolivro.junior_carvalho.carros.R.color.black;
 
 /**
  * Created by Junior_Carvalho on 27/03/2016.
@@ -35,21 +38,22 @@ public class CarroTabFragment extends BaseFragment {
         //cria as tabes com o mesmo adapter utilisado pelo viewpager
         tabLayout.setupWithViewPager(viewPager);
         //
-        int cor = ContextCompat.getColor(getContext(), R.color.black);
+     int cor = ContextCompat.getColor(getContext(), R.color.black);
         // cor do texto = branca,
         // cor de fundo azul ou (Laranja) foi definida no layout // "@color/primary"
         // ou poderia utiliar para cor do layout
-        // tabLayout.setBackgroundColor(Color.BLUE);
+        //  tabLayout.setBackgroundColor(Color.BLUE);
 
         // primeiro parametro = cor do texto, segundo cor do texto referente aba selecionada
-        //  tabLayout.setTabTextColors(Color.BLACK,Color.YELLOW);
-        tabLayout.setTabTextColors(cor, cor);
+       // tabLayout.setTabTextColors(Color.BLACK, Color.RED);
+
+         tabLayout.setTabTextColors(cor, cor);
 
         // muda a cor da barra inferior da tab selecionada
-        //  tabLayout.setSelectedTabIndicatorColor(Color.GREEN);
+        tabLayout.setSelectedTabIndicatorColor(Color.YELLOW);
+
 
         return view;
-
 
     }
 }

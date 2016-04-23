@@ -31,9 +31,7 @@ ele é formado por duas partes, o conteudo e a lista de itens
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/gray"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
 
             <!-- TOOLBAR -, deve icar dentro appbarlayout para que o comportamento
             seja gerenciado automaticamente-->
@@ -46,15 +44,16 @@ ele é formado por duas partes, o conteudo e a lista de itens
                 android:id="@+id/tablayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|enterAlways" />
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:background="@color/orange_500"
+                 app:tabIndicatorColor="@color/ColorSelectedTabIndicator"
+                />
             <!--
            para fazer efeito de rolagem na toolbas
            foi add a seguinte linha
             app:layout_scrollFlags="scroll|enterAlways"
           -->
-
         </android.support.design.widget.AppBarLayout>
-
 
         <!--os prinicipais componentes da view precisam reagir a roalgem
          porisso foi adicoinado aqui o viewpage (antes fica na carrostabgragment)-->
@@ -74,7 +73,8 @@ ele é formado por duas partes, o conteudo e a lista de itens
             android:layout_marginBottom="@dimen/fab_margin"
             android:layout_marginRight="@dimen/fab_margin"
             android:src="@android:drawable/ic_input_add"
-            android:tint="#fff000" />
+            app:backgroundTint="@color/orange_500"
+            android:tint="@color/ColorSelectedTabIndicator" />
     </android.support.design.widget.CoordinatorLayout>
 
 
@@ -85,13 +85,12 @@ ele é formado por duas partes, o conteudo e a lista de itens
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
+        android:background="@drawable/border_imagemview"
         app:headerLayout="@layout/nav_drawer_header"
         app:menu="@menu/nav_drawer_menu" />
 
     <!-- nav_drawer_header é o layout do cabecalho -->
     <!-- nav_drawer_menu contem os itens do menu -->
-
-
 </android.support.v4.widget.DrawerLayout>
 
 

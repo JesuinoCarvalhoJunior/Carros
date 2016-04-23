@@ -1,10 +1,13 @@
 package com.projetolivro.junior_carvalho.carros.activity;
 
+import android.graphics.Color;
+import android.os.Bundle;
 import android.os.Environment;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,14 +31,17 @@ public class MainActivity extends BaseActivity {
         //configura active para usar nav drawer
         setupNavDrawer();
         // iniciliza o aplicativo e adicionar lista de carros
-       //  replaceFragment(CarrosFragment.newInstance(R.string.carros));
+        //  replaceFragment(CarrosFragment.newInstance(R.string.carros));
 
         // exibir as 3 tabs ao inicializar
-      // naao precisa mais
-      //  replaceFragment(new CarroTabFragment());
+        // naao precisa mais
+        //  replaceFragment(new CarroTabFragment());
 
         //exibir tabs
         setupViewPagerTabs();
+
+        FloatingActionButton fa = (FloatingActionButton) findViewById(R.id.fab);
+        fa.setBackgroundColor(Color.BLUE);
 
 
         // FAB
@@ -46,11 +52,11 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-               if (chk){
-                   snack(v, "As notificações estão habilitadas!");
-               }   else
+                if (chk){
+                    snack(v, "As notificações estão habilitadas!");
+                }   else
 
-                snack(v, "Nenhum evento implementado!");
+                    snack(v, "Nenhum evento implementado!");
             }
         });
 
@@ -63,71 +69,72 @@ public class MainActivity extends BaseActivity {
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_about){
+        if (id == R.id.action_about) {
             AboutDialog.showAbout(getSupportFragmentManager());
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
- // configura TABs e ViewPager
-     private void setupViewPagerTabs(){
+    // configura TABs e ViewPager
+    private void setupViewPagerTabs() {
 
-         //ViewPager
-         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-         // limite indica para viewpager manter 2 tabs a mais alem da qe esta sendo visualizda
-         viewPager.setOffscreenPageLimit(2);
-         //
-         viewPager.setAdapter(new TabsAdapter(getContext(), getSupportFragmentManager()));
+        //ViewPager
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        // limite indica para viewpager manter 2 tabs a mais alem da qe esta sendo visualizda
+        viewPager.setOffscreenPageLimit(2);
+        //
+        viewPager.setAdapter(new TabsAdapter(getContext(), getSupportFragmentManager()));
 
-         //TABs
-         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
-         //cria as tabes com o mesmo adapter utilisado pelo viewpager
-         tabLayout.setupWithViewPager(viewPager);
-         int cor = ContextCompat.getColor(getContext(), R.color.white);
-         // cor do texto = branca,
-         // cor de fundo azul ou (Laranja) foi definida no layout // "@color/primary"
-         // ou poderia utiliar para cor do layout
-         // tabLayout.setBackgroundColor(Color.BLUE);
+        //TABs
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
+        //cria as tabes com o mesmo adapter utilisado pelo viewpager
+        tabLayout.setupWithViewPager(viewPager);
+        int cor = ContextCompat.getColor(getContext(), R.color.white);
+        // cor do texto = branca,
+        // cor de fundo azul ou (Laranja) foi definida no layout // "@color/primary"
+        // ou poderia utiliar para cor do layout
+        // tabLayout.setBackgroundColor(Color.BLUE);
 
-         // primeiro parametro = cor do texto, segundo cor do texto referente aba selecionada
-         //  tabLayout.setTabTextColors(Color.BLACK,Color.YELLOW);
-         tabLayout.setTabTextColors(cor, cor);
-         // muda a cor da barra inferior da tab selecionada
-         //   tabLayout.setSelectedTabIndicatorColor(Color.GREEN);
-
-
-         //region Description - Configura a utlima tab selecionada pelo usuario
-         int tabIdx = Prefs.getInteger(getContext(), "tabIdx");
-         viewPager.setCurrentItem(tabIdx);
-         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-             @Override
-             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-             }
-             @Override
-             public void onPageSelected(int position) {
-               //salva o indice da pagina/tab selecionada
-                 Prefs.setInteger(getContext(),"tabIdx", viewPager.getCurrentItem());
-             }
-             @Override
-             public void onPageScrollStateChanged(int state) {
-
-             }
-         });
-         //endregion
+        // primeiro parametro = cor do texto, segundo cor do texto referente aba selecionada
+        //  tabLayout.setTabTextColors(Color.BLACK,Color.YELLOW);
+        tabLayout.setTabTextColors(cor, cor);
+        // muda a cor da barra inferior da tab selecionada
+        //   tabLayout.setSelectedTabIndicatorColor(Color.GREEN);
 
 
+        //region Description - Configura a utlima tab selecionada pelo usuario
+        int tabIdx = Prefs.getInteger(getContext(), "tabIdx");
+        viewPager.setCurrentItem(tabIdx);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-     }
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                //salva o indice da pagina/tab selecionada
+                Prefs.setInteger(getContext(), "tabIdx", viewPager.getCurrentItem());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+
+
+        });
+        //endregion
+    }
 
 
 }

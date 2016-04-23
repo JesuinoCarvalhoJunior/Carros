@@ -23,7 +23,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingBottom="16dp"
-            android:paddingTop="16dp">
+            android:paddingTop="16dp"
+            android:background="@drawable/border_imagemview"
+            >
 
             <!-- Desc -->
             <TextView
@@ -32,7 +34,7 @@
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/descricao"
-                android:textSize="16sp"
+               android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -63,7 +65,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/border_imagemview"
+            >
             <!-- Video -->
             <TextView
                 android:layout_width="wrap_content"
@@ -120,7 +124,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/border_imagemview"
+            >
             <!-- Lat -->
             <TextView
                 android:layout_width="wrap_content"

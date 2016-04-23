@@ -5,15 +5,23 @@
     <string name="action_about">Sobre</string>
     <string name="action_settings">Settings</string>
     <string name="about_dialog_text">
+<!--
 <![CDATA[
 <b>Aplicativo dos Carros 2015</b><br>
 Versao %s<br><br>
 <a href="http://www.livroandroid.com.br">http://livroandroid.com.br</a><br><br>
 <a href="http://www.facebook.com/ricardolecheta">http://facebook.com/ricardolecheta</a><br><br>
 <a href="https://plus.google.com/+RicardoLecheta">https://plus.google.com/+RicardoLecheta</a>
+	]]> -->
+
+        <![CDATA[
+<b>Aplicativo dos Carros 2015</b><br>
+Versao %s<br><br>
+<a href="http://www.google.com.br"> http://www.google.com.br</a><br><br>
 	]]>
+
 	</string>
-    <string name="about_dialog_title">Livro Android</string>
+    <string name="about_dialog_title">Aplicativo Carros - Android</string>
 
     <!-- C -->
     <string name="carros">Carros</string>
@@ -36,7 +44,7 @@ Versao %s<br><br>
     <string name="mapa">Mapa</string>
     <string name="msg_alerta_permissao">Para utilizar este aplicativo, você precisa aceitar as permissões!</string>
 
-        <!-- N -->
+    <!-- N -->
     <string name="nav_drawer_username">Júnior Carvalho</string>
     <string name="nav_drawer_email">jcarvalho.junior@hotmail.com</string>
     <string name="nome">Nome</string>
@@ -46,7 +54,7 @@ Versao %s<br><br>
 
     <!-- S -->
     <string name="sobre">Sobre</string>
-    <string name="site_do_livro">Site do Livro</string>
+    <string name="site_do_livro">Site</string>
     <string name="sobre_aparelho">Sobre aparelho</string>
     <string name="sair">Sair</string>
 
@@ -70,7 +78,6 @@ Versao %s<br><br>
     <string name="READ_CALENDAR">android.permission.READ_CALENDAR</string>
     <string name="ACCESS_FINE_LOCATION">android.permission.ACCESS_FINE_LOCATION</string>
     <string name="READ_CONTACTS">android.permission.READ_CONTACTS</string>
-
 
 
 </resources>

@@ -8,7 +8,8 @@
         <CheckBoxPreference
             android:key="PREF_CHECK_PUSH"
             android:summary="Receber alertas de Push sobre lançamentos de novos carros."
-            android:title="Notificações" />
+            android:title="Notificações"
+            />
     </PreferenceCategory>
 
 

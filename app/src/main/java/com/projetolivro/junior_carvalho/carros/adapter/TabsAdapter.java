@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.widget.TabHost;
 
 import com.projetolivro.junior_carvalho.carros.R;
 import com.projetolivro.junior_carvalho.carros.fragments.CarrosFragment;
@@ -49,4 +50,6 @@ public class TabsAdapter extends FragmentPagerAdapter {
         }else
             return  context.getString(R.string.luxo);
     }
+
+
 }
