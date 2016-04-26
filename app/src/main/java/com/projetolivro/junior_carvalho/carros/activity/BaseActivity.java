@@ -223,6 +223,7 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
         buf.append("<b>FINGERPRINT</b><br />" + Build.FINGERPRINT + "<br />");
         buf.append("<b>HOST</b><br />" + Build.HOST + "<br />");
         buf.append("<b>ID</b><br />" + Build.ID + "<br />");
+        buf.append("<b>PRODUTO</b><br />" + Build.MANUFACTURER + "<br />");
         buf.append("<b>MODELO</b><br />" + Build.MODEL + "<br />");
         buf.append("<b>BOOT</b><br />" + Build.BOOTLOADER + "<br />");
         buf.append("<b>HARDWARE</b><br />" + Build.HARDWARE + "<br />");

@@ -31,7 +31,8 @@ ele é formado por duas partes, o conteudo e a lista de itens
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            >
 
             <!-- TOOLBAR -, deve icar dentro appbarlayout para que o comportamento
             seja gerenciado automaticamente-->

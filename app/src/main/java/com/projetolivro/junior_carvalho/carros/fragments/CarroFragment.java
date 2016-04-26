@@ -41,7 +41,7 @@ public class CarroFragment extends BaseFragment {
         carro = Parcels.unwrap(getArguments().getParcelable("carro"));
 
         // informa ao android que este fragment contem MENU = menu_frag_carro.xml
-        //   setHasOptionsMenu(true);
+        setHasOptionsMenu(true);
 
         return view;
     }
@@ -57,7 +57,6 @@ public class CarroFragment extends BaseFragment {
         Picasso.with(getContext()).load(carro.urlFoto).fit().into(imgView);
     }
 
-/*
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -94,9 +93,7 @@ public class CarroFragment extends BaseFragment {
             toast("Mapa");
         } else if (item.getItemId() == R.id.action_video) {
             toast("Video");
-
         }
-
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 }

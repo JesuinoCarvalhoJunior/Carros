@@ -25,12 +25,18 @@
             android:id="@+id/nav_item_carros_luxo"
             android:checked="true"
             android:icon="@drawable/ic_drawer_carro"
-            android:title="@string/luxo" />
+            android:title="@string/luxo"
+            android:divider="@android:color/black"
+            android:dividerHeight="1dp"
+            />
         <!-- WEBVIEW COM INFORMAÇÕES SOBRE O LIVRO -->
         <item
             android:id="@+id/nav_item_site_livro"
             android:icon="@drawable/ic_drawer_site_livro"
-            android:title="@string/site_do_livro" />
+            android:title="@string/site_do_livro"
+            android:divider="@android:color/black"
+            android:dividerHeight="1dp"
+            />
         <!-- TELA DE CONFIGURAÇÕES -->
         <item
             android:id="@+id/nav_item_settings"
@@ -42,7 +48,9 @@
         <item
             android:id="@+id/nav_item_sobreaparelho"
             android:icon="@drawable/ic_info_black_36dp"
-            android:title="@string/sobre_aparelho" />
+            android:title="@string/sobre_aparelho"
+            android:divider="@android:color/black"
+            android:dividerHeight="1dp"/>
 
         <!-- SAIR DA APLICACAO -->
         <item

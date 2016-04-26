@@ -23,11 +23,10 @@ import org.parceler.Parcels;
  * Created by Junior_Carvalho on 24/04/2016.
  */
 public class EditarCarroDialog extends DialogFragment {
-   // private Callback callback;
+    private Callback callback;
     private Carro carro;
     private TextView tNome;
 
-/*
     // Interface para retornar o resultado
     public interface Callback {
         void onCarroUpdated(Carro carro);
@@ -96,7 +95,8 @@ public class EditarCarroDialog extends DialogFragment {
             }
         };
     }
-*/
+
+
 
 
 }
