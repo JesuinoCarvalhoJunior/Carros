@@ -8,7 +8,7 @@ import android.view.View;
 public interface CarroOnClickListener {
 
 
-  //  void onClickCarro1(View view, int idx);
+    void onClickCarro1(View view, int idx);
 
 
 }

@@ -5,23 +5,16 @@
     android:layout_height="@dimen/navDrawerBackground_layout_height"
     android:layout_gravity="start"
     android:background="#ff0000"
-    tools:ignore="MissingPrefix"
-
-
-    >
-
-    <!--RelativeLayout    android:background="@drawable/border_imagemview"-->
-    <!-- IMG FUNDO -->
+    tools:ignore="MissingPrefix">
+    <!-- Img fundo -->
     <ImageView
         android:id="@+id/imgUserBackground"
         android:layout_width="match_parent"
         android:layout_height="@dimen/navDrawerBackground_layout_height"
         android:contentDescription="@string/vazio"
-        android:src="@drawable/nav_drawer_header"
         android:scaleType="fitXY"
-        android:background="@drawable/border_imagemview"
-        />
-    <!-- LOGO USUÁRIO -->
+        android:src="@drawable/nav_drawer_header" />
+    <!-- Logo usuário -->
     <livroandroid.lib.view.RoundedImageView
         android:id="@+id/imgUserPhoto"
         android:layout_width="@dimen/navDrawerPhoto_layout_width"
@@ -30,6 +23,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="@dimen/navDrawerPhoto_layout_marginLeft"
         android:layout_marginTop="32dp" />
+
     <LinearLayout
         android:id="@+id/userData"
         android:layout_width="wrap_content"
@@ -40,7 +34,7 @@
         android:layout_marginBottom="@dimen/navDrawerData_layout_marginBottom"
         android:gravity="center_vertical"
         android:orientation="vertical">
-        <!-- NOME USUÁRIO -->
+        <!-- Nome usuário -->
         <TextView
             android:id="@+id/tUserName"
             fontPath="fonts/Roboto-Medium.ttf"
@@ -49,7 +43,7 @@
             android:layout_marginLeft="@dimen/navDrawerName_layout_marginLeft"
             android:textColor="#FFFFFF"
             android:textSize="@dimen/navDrawerName_textSize" />
-        <!-- EMAIL USUÁRIO -->
+        <!-- Email usuário -->
         <TextView
             android:id="@+id/tUserEmail"
             fontPath="fonts/Roboto-Regular.ttf"

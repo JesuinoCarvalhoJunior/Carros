@@ -7,7 +7,7 @@
 
 
     <!-- O gerencidor de  layout  SwipeRefreshLayout só pode ter 1 filho, neste caso é o Recyclerview   -->
-   <!--pull to Refresh com SwipeRefreshLayout  -->
+    <!--pull to Refresh com SwipeRefreshLayout  -->
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeToRefresh"
         android:layout_width="match_parent"

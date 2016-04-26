@@ -2,7 +2,11 @@ package com.projetolivro.junior_carvalho.carros;
 
 import android.test.AndroidTestCase;
 
+import com.projetolivro.junior_carvalho.carros.domain.Carro;
+import com.projetolivro.junior_carvalho.carros.domain.CarroService;
+
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by Junior_Carvalho on 08/04/2016.

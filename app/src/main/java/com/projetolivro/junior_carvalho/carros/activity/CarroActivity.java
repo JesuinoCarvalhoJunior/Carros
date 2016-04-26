@@ -2,6 +2,7 @@ package com.projetolivro.junior_carvalho.carros.activity;
 
 import android.os.Bundle;
 
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.widget.ImageView;
 
 import com.projetolivro.junior_carvalho.carros.R;
@@ -38,6 +39,11 @@ public class CarroActivity extends BaseActivity {
         }
     }
 
+ /*   public void setTitle(String s){
+        // o itulo deve ser setado na CollapsingToolbarLayout
+       CollapsingToolbarLayout c = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        c.setTitle(s);
+    }*/
 
  /*   @Override
     protected void onCreate(Bundle savedInstanceState) {

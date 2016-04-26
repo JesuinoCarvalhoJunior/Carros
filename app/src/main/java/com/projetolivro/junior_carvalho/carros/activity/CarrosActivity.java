@@ -22,7 +22,7 @@ public class CarrosActivity extends  BaseActivity { //AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // define o título da Action Bar
-         getSupportActionBar().setTitle(getString(getIntent().getIntExtra("tipo", 0)));
+        getSupportActionBar().setTitle(getString(getIntent().getIntExtra("tipo", 0)));
 
         if (savedInstanceState == null) {
             // cria o fragment com o mesmo Bundle (args) da intent

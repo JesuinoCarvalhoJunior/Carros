@@ -9,7 +9,6 @@
     android:layout_margin="6dp"
     android:foreground="?attr/selectableItemBackground"
 
-
     app:cardElevation="3dp"
     app:cardPreventCornerOverlap="false"
     app:cardUseCompatPadding="false"
@@ -21,8 +20,9 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@drawable/border_imagemview"
-        android:orientation="vertical">
+        >
 
         <TextView
             android:id="@+id/text"
@@ -30,15 +30,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:textSize="20sp"
             android:textColor="@color/orange"
-            />
+            android:textSize="20sp" />
 
         <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:gravity="center">
+            android:layout_height="wrap_content">
 
             <!--FOTO CARRO        -->
             <ImageView
@@ -49,7 +46,18 @@
                 android:layout_marginTop="6dp" />
 
 
-            <!--BARRA PROGRESSO ENQUANDO CARREGA A FOTO -->
+            <!--BARRA PROGRESSO ENQUANDO CARREGA A FOTO
+            <ProgressBar
+                android:id="@+id/progressImg"
+                style="@android:style/Widget.ProgressBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:gravity="center|center_vertical"
+                android:layout_marginRight="6dp"
+                android:visibility="invisible"/>
+                 -->
+            <!-- Barra de progresso enquanto carrega a foto -->
             <ProgressBar
                 android:id="@+id/progressImg"
                 style="@android:style/Widget.ProgressBar.Small"

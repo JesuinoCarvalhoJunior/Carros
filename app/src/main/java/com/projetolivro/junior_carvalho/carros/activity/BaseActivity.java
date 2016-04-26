@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.projetolivro.junior_carvalho.carros.R;
+
 import com.projetolivro.junior_carvalho.carros.activity.prefs.ConfiguracoesActivity;
 import com.projetolivro.junior_carvalho.carros.activity.prefs.ConfiguracoesV11Activity;
 import com.projetolivro.junior_carvalho.carros.utils.SoftHardware;
@@ -47,12 +48,12 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
 
     /**
      A configuracao do menu lateral é feito aqi na base activity para
-      que seja possivel reutilizar o codigo no projeto
-    *
+     que seja possivel reutilizar o codigo no projeto
+     *
      configura nav drawer
-    <p>Metodo ativa a ToolBar</p>
+     <p>Metodo ativa a ToolBar</p>
 
-    */
+     */
 
     protected void setUpToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -267,7 +268,7 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
         intent.addCategory(Intent.CATEGORY_HOME);
         //Se definido, esta atividade se tornará o começo de uma nova tarefa nesta pilha de histórico.
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //   startActivity(intent);
+        //    startActivity(intent);
         finish();
     }
 }
