@@ -17,6 +17,7 @@ public class TabsAdapter extends FragmentPagerAdapter {
 
     private Context context;
 
+
     public TabsAdapter(Context context, FragmentManager fm) {
         super(fm);
         this.context = context;
@@ -27,11 +28,13 @@ public class TabsAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         Fragment f = null;
 
+
         if (position == 0) {
-            f = CarrosFragment.newInstance(R.string.classicos);
+                        f = CarrosFragment.newInstance(R.string.classicos);
         } else if (position == 1) {
             f = CarrosFragment.newInstance(R.string.esportivos);
         } else
+
             f = CarrosFragment.newInstance(R.string.luxo);
         return f;
     }
