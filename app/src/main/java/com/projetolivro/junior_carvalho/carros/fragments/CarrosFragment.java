@@ -320,7 +320,15 @@ public class CarrosFragment extends BaseFragment {
             } else if (selectedCarros.size() > 1) {
                 actionMode.setSubtitle(selectedCarros.size() + " carros selecionados");
             }
+
+            //retorna titulo da nav bar
+            if(selectedCarros.size() == 0){
+                recyclerView.getAdapter().notifyDataSetChanged();
+                actionMode.finish();
+            }
         }
+
+
 
     }
 
