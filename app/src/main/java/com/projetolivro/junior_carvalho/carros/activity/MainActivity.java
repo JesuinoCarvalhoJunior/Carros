@@ -1,10 +1,10 @@
 package com.projetolivro.junior_carvalho.carros.activity;
 
+import android.app.backup.BackupManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -21,6 +21,8 @@ import com.projetolivro.junior_carvalho.carros.utils.PrefsUtils;
 import livroandroid.lib.utils.Prefs;
 
 public class MainActivity extends BaseActivity {
+
+    private BackupManager backupManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +54,9 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                if (chk){
+                if (chk) {
                     snack(v, "As notificações estão habilitadas!");
-                }   else
+                } else
 
                     snack(v, "Nenhum evento implementado!");
             }
@@ -65,6 +67,10 @@ public class MainActivity extends BaseActivity {
         Log.d("tag", "getfiledir > : " + getFileStreamPath("arquivo.txt"));
         Log.d("tag", "getfiledir > : " + getExternalFilesDir(Environment.DIRECTORY_DCIM));
         Log.d("tag", "getfiledir > : " + getCacheDir());
+
+        // gerenciador de BACKUP
+        // faz com que sempre que alguma preferencia for salva, entao faz bkp
+        backupManager = new BackupManager(getContext());
     }
 
 
@@ -124,6 +130,10 @@ public class MainActivity extends BaseActivity {
             public void onPageSelected(int position) {
                 //salva o indice da pagina/tab selecionada
                 Prefs.setInteger(getContext(), "tabIdx", viewPager.getCurrentItem());
+
+                // faz o bkp da preferencia
+                 backupManager.dataChanged();
+
             }
 
             @Override

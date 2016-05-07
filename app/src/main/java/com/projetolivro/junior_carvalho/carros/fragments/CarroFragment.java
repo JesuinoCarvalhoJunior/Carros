@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.projetolivro.junior_carvalho.carros.CarrosApplication;
 import com.projetolivro.junior_carvalho.carros.R;
 import com.projetolivro.junior_carvalho.carros.activity.CarroActivity;
 import com.projetolivro.junior_carvalho.carros.domain.BD.CarroDB;
@@ -57,6 +58,7 @@ public class CarroFragment extends BaseFragment {
         Picasso.with(getContext()).load(carro.urlFoto).fit().into(imgView);
     }
 
+    //Menu de opções
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -66,25 +68,41 @@ public class CarroFragment extends BaseFragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.action_edit) {
-//            toast("Editar " + carro.nome);
-
+            //toast("Editar: " + carro.nome);
             EditarCarroDialog.show(getFragmentManager(), carro, new EditarCarroDialog.Callback() {
                 @Override
                 public void onCarroUpdated(Carro carro) {
-                    toast("Carro [" + carro.nome + "] atualizado.");
-                    // Salva o carro depois de fechar o dialog
+                    toast("Carro [" + carro.nome + "] atualizado");
+                    // Salva o carro
                     CarroDB db = new CarroDB(getContext());
                     db.save(carro);
-                    // atualiza o titulo com o novo nome
-                    CarroActivity ca = (CarroActivity) getActivity();
-                    ca.setTitle(carro.nome);
-
+                    // Atualiza o título com o novo nome
+                    CarroActivity a = (CarroActivity) getActivity();
+                    a.setTitle(carro.nome);
+                    // Envia o evento/mensagem para o bus informando que precisa ser atualizada a lista
+                    // a mensagem sera interceptada pela classe CarrosFragments
+                    CarrosApplication.getInstance().getBus().post("refresh");
                 }
             });
             return true;
 
         } else if (item.getItemId() == R.id.action_delete) {
             toast("Deletar " + carro.nome);
+            DeletarCarroDialog.show(getFragmentManager(), new DeletarCarroDialog.Callback() {
+                @Override
+                public void onClickYes() {
+                    toast("Carro [" + carro.nome + "] deletado.");
+                    // Deleta o carro
+                    CarroDB db = new CarroDB(getActivity());
+                    db.delete(carro);
+                    // Fecha a activity
+                    getActivity().finish();
+                    // Envia o evento para o bus informando que precisa ser atualizada a lista
+                    // a mensagem sera interceptada pela classe CarrosFragments
+                    CarrosApplication.getInstance().getBus().post("refresh");
+                }
+            });
+
             return true;
         } else if (item.getItemId() == R.id.action_share) {
             toast("Compartilhar");

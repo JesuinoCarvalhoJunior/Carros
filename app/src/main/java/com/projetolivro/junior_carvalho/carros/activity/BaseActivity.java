@@ -21,6 +21,8 @@ import com.projetolivro.junior_carvalho.carros.R;
 
 import com.projetolivro.junior_carvalho.carros.activity.prefs.ConfiguracoesActivity;
 import com.projetolivro.junior_carvalho.carros.activity.prefs.ConfiguracoesV11Activity;
+
+import com.projetolivro.junior_carvalho.carros.utils.Exibe_Perc_Bateria;
 import com.projetolivro.junior_carvalho.carros.utils.SoftHardware;
 
 import livroandroid.lib.utils.AndroidUtils;
@@ -163,7 +165,11 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
 
                 break;
             case R.id.nav_item_sobreaparelho:
-                InfoHardsoftware();
+                //InfoHardsoftware();
+
+                Intent i = new Intent(getContext(), Exibe_Perc_Bateria.class);
+                startActivity(i);
+
                 break;
 
             case R.id.nav_item_sairaplicacao:

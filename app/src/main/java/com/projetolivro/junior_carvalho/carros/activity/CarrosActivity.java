@@ -18,7 +18,7 @@ public class CarrosActivity extends  BaseActivity { //AppCompatActivity {
         // configura toolbar como a action bar
         setUpToolBar();
 
-        //habilita set para esquerda (up navegation)
+        //habilita seta para esquerda (up navegation)
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // define o título da Action Bar

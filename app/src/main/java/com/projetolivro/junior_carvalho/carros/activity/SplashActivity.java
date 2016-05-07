@@ -55,7 +55,7 @@ public class SplashActivity extends BaseActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         for (int result : grantResults) {
-            if (result == PackageManager.PERMISSION_DENIED) {
+/*            if (result == PackageManager.PERMISSION_DENIED) {
                 // Negou a permissão. Mostra alerta e fecha.
                 AlertUtils.alert(getContext(), R.string.app_name, R.string.msg_alerta_permissao, R.string.ok,  new Runnable() {
                     @Override
@@ -65,7 +65,7 @@ public class SplashActivity extends BaseActivity {
                     }
                 });
                 return;
-            }
+            }*/
         }
 
         // Permissões concedidas, pode entrar.

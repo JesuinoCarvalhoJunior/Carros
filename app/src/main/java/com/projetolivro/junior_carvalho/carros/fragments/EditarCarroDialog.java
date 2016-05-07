@@ -64,16 +64,19 @@ public class EditarCarroDialog extends DialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.dialog_editar_carro, container, false);
         view.findViewById(R.id.btAtualizar).setOnClickListener(onClickAtualizar());
         tNome = (TextView) view.findViewById(R.id.tNome);
 
-        this.carro = getArguments().getParcelable("carro");
+        this.carro = Parcels.unwrap(getArguments().getParcelable("carro"));
+
         if (carro != null) {
             tNome.setText(carro.nome);
         }
         return view;
     }
+
 
     private View.OnClickListener onClickAtualizar() {
         return new View.OnClickListener() {

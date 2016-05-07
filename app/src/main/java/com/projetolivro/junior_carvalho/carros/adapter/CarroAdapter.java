@@ -53,7 +53,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
         holder.progress.setVisibility(View.VISIBLE);
 
         // faz download da foto e mostra o progressbar
-        Picasso.with(context).load(c.urlFoto).fit().into(holder.img, new Callback() {
+        Picasso.with(context).load(c.urlFoto).fit().into(holder.imgCard, new Callback() {
 
             // metodos da interface Callback
             @Override
@@ -67,7 +67,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
                 holder.progress.setVisibility(View.GONE);
             }
         });
-        // click
+        // click normal
         if (carroOnClickListener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,7 +77,35 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
                     // carroOnClickListener.onClickCarro(holder.itemView, position);
                 }
             });
+            // Click longo
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    carroOnClickListener.onLongClickCarro(holder.itemView, position);
+                    return true;
+                }
+            });
         }
+
+
+        // Pinta o fundo de azul se a linha estiver selecionada
+        int corFundo = context.getResources().getColor(c.selected ? R.color.brown_100 : R.color.white);
+        holder.cardView.setBackgroundColor(corFundo);
+        // A cor do texto é branca ou azul, depende da cor do fundo.
+        int corFonte = context.getResources().getColor(c.selected ? R.color.gray_600 : R.color.orange);
+        holder.tNome.setTextColor(corFonte);
+
+
+/*
+ // lista zebrada
+        if((position % 2 == 0)){
+            holder.cardView.setCardBackgroundColor(R.color.blue);
+        }else{
+            holder.cardView.setCardBackgroundColor(R.color.red);
+        }
+*/
+
+
     }
 /*
 
@@ -89,14 +117,21 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
 
 
     // remover a interface CarroOnClickListener  e usar este metodo
+
+    // esse metodos estao implementados em
+    //  private CarroAdapter.CarroOnClickListener onClickCarro() {
     public interface CarroOnClickListener {
-        public void onClickCarro(View view, int idx);
+        // click normal
+        void onClickCarro(View view, int idx);
+
+        // click longo
+        void onLongClickCarro(View view, int idx);
     }
 
     // viewholder com as view
     public static class CarrosViewHolder extends RecyclerView.ViewHolder {
         public TextView tNome;
-        ImageView img;
+        ImageView imgCard;
         ProgressBar progress;
         CardView cardView;
 
@@ -104,7 +139,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarrosViewHo
             super(view);
             // cria as views para salvar no ViweHolder
             tNome = (TextView) view.findViewById(R.id.text);
-            img = (ImageView) view.findViewById(R.id.img);
+            imgCard = (ImageView) view.findViewById(R.id.imgCard);
             progress = (ProgressBar) view.findViewById(R.id.progressImg);
             cardView = (CardView) view.findViewById(R.id.card_view);
         }

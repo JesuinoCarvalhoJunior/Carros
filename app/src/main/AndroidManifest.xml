@@ -16,15 +16,36 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <!-- Acesso a agenda de contados -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- Acesso sistema android -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
+    <!--
+     indica qe o app faz bkp
+      android:allowBackup="true"
+      nome da classe reponsavel pelo bkp
+      android:backupAgent=".backup.ExemploBackupAgent"
+    -->
     <application
         android:name=".CarrosApplication"
         android:allowBackup="true"
+        android:backupAgent=".backup.ExemploBackupAgent"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar" >
-        <!--android:theme="@style/AppTheme"> -->
+        android:theme="@style/AppTheme.NoActionBar">
+
+        <!--
+         Chave unica para servico google
+              registrada em: https://developer.android.com/intl/pt-br/google/backup/signup.html
+
+              resultado abaixo
+         https://play.google.com/apps/publish/GetBackupApiKey?p=com.projetolivro.junior_carvalho.carros
+        -->
+        <meta-data
+            android:name="com.google.android.backup.api_key"
+            android:value="@string/chave_backup" />
+        <!-- android:theme="@style/AppTheme"> -->
+
 
         <!--
               <activity
@@ -47,10 +68,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--
+         android:launchMode="singleTop" faz com que seja aproveitada a instancia e nao cria outra.
+         sera ultil para os seguinte caso; Na lsita de carros ao seleciona o ultimo carro e apos abrir
+         a tela de detalhes, caso seja utilizando a seta para esquerda Up Navegation o sistema destroi
+         as pilhas das activitys e recriam novamente, pis por padrao o launchMode é definido como Standar,
+          para não recriar a acitiviyts e reaproivetar posicial em que estava selecionado o carro
+          entao foi alterado de Standar para SingleTop pois o mesm mantem apenas uma instancia da
+          activity.
+        -->
         <activity
             android:name=".activity.MainActivity"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar.NavDrawer" />
-
         <activity
             android:name=".activity.CarroActivity"
             android:parentActivityName=".activity.MainActivity">
@@ -58,7 +88,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-
         <activity
             android:name=".activity.CarrosActivity"
             android:parentActivityName=".activity.MainActivity">
@@ -66,7 +95,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-
         <activity
             android:name=".activity.prefs.ConfiguracoesActivity"
             android:label="Configuralçies">
@@ -97,6 +125,7 @@
             </intent-filter>
         </activity>
         -->
+        <activity android:name=".utils.Exibe_Perc_Bateria"></activity>
     </application>
 
 </manifest>

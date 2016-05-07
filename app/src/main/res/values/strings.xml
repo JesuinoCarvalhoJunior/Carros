@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Carros</string>
+    <string name="app_name">Carros </string>
 
     <!-- A -->
     Atualizar
@@ -32,7 +32,8 @@ Versao %s<br><br>
     <!-- C -->
     <string name="carros">Carros</string>
     <string name="configuracoes">Configurações</string>
-    <string name="classicos">Clássicos</string>
+    <string name="classicos">Clássicoss</string>
+    <string name="chave_backup">AEdPqrEAAAAI6f48sFslxkyPhTyZ1QzbbeLFb6V4uN-41gk-fQ</string>
 
 
     <!-- D -->
@@ -68,6 +69,10 @@ Versao %s<br><br>
     <string name="sair">Sair</string>
     <string name="share">Share</string>
 
+    <!-- B -->
+    <string name="check_batpercent">Percentual bateria</string>
+
+
     <!-- V -->
     <string name="vazio" />
     <string name="video">Vídeo</string>
@@ -88,6 +93,7 @@ Versao %s<br><br>
     <string name="READ_CALENDAR">android.permission.READ_CALENDAR</string>
     <string name="ACCESS_FINE_LOCATION">android.permission.ACCESS_FINE_LOCATION</string>
     <string name="READ_CONTACTS">android.permission.READ_CONTACTS</string>
+    <string name="EDITAR_CONFIGURACAO_ANDROID">android.permission.WRITE_SETTINGS</string>
 
 
 </resources>

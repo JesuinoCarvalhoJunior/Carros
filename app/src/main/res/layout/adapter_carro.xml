@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
 
@@ -8,21 +9,20 @@
     android:layout_height="match_parent"
     android:layout_margin="6dp"
     android:foreground="?attr/selectableItemBackground"
-
     app:cardElevation="3dp"
     app:cardPreventCornerOverlap="false"
     app:cardUseCompatPadding="false"
-
     card_view:cardCornerRadius="2dp"
     card_view:cardElevation="6dp">
 
+
+    <!-- android:background="@drawable/border_imagemview"-->
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/border_imagemview"
-        >
+
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/text"
@@ -39,7 +39,7 @@
 
             <!--FOTO CARRO        -->
             <ImageView
-                android:id="@+id/img"
+                android:id="@+id/imgCard"
                 android:layout_width="@dimen/img_carro_adapter_width"
                 android:layout_height="@dimen/img_carro_adapter_height"
                 android:layout_gravity="center_horizontal"

@@ -39,11 +39,11 @@ public class CarroActivity extends BaseActivity {
         }
     }
 
- /*   public void setTitle(String s){
+    public void setTitle(String s){
         // o itulo deve ser setado na CollapsingToolbarLayout
        CollapsingToolbarLayout c = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         c.setTitle(s);
-    }*/
+    }
 
  /*   @Override
     protected void onCreate(Bundle savedInstanceState) {

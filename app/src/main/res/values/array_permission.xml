@@ -13,5 +13,6 @@
         <item>@string/READ_CALENDAR</item>
         <item>@string/ACCESS_FINE_LOCATION</item>
         <item>@string/READ_CONTACTS</item>
+        <item>@string/EDITAR_CONFIGURACAO_ANDROID</item>
     </string-array>
 </resources>
