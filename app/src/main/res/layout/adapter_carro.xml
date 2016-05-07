@@ -6,7 +6,7 @@
 
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="6dp"
     android:foreground="?attr/selectableItemBackground"
     app:cardElevation="3dp"
@@ -16,12 +16,9 @@
     card_view:cardElevation="6dp">
 
 
-    <!-- android:background="@drawable/border_imagemview"-->
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:orientation="vertical">
 
         <TextView
@@ -45,18 +42,6 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="6dp" />
 
-
-            <!--BARRA PROGRESSO ENQUANDO CARREGA A FOTO
-            <ProgressBar
-                android:id="@+id/progressImg"
-                style="@android:style/Widget.ProgressBar.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_vertical"
-                android:gravity="center|center_vertical"
-                android:layout_marginRight="6dp"
-                android:visibility="invisible"/>
-                 -->
             <!-- Barra de progresso enquanto carrega a foto -->
             <ProgressBar
                 android:id="@+id/progressImg"
