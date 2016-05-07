@@ -321,7 +321,7 @@ public class CarrosFragment extends BaseFragment {
                 actionMode.setSubtitle(selectedCarros.size() + " carros selecionados");
             }
 
-            //retorna titulo da nav bar
+            //retorna titulo da navbar
             if(selectedCarros.size() == 0){
                 recyclerView.getAdapter().notifyDataSetChanged();
                 actionMode.finish();
