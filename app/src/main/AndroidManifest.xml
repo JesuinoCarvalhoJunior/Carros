@@ -17,7 +17,7 @@
     <!-- Acesso a agenda de contados -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <!-- Acesso sistema android -->
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <!--
      indica qe o app faz bkp
@@ -125,7 +125,8 @@
             </intent-filter>
         </activity>
         -->
-        <activity android:name=".utils.Exibe_Perc_Bateria"></activity>
+        <activity android:name=".utils.Exibe_Perc_Bateria" />
+        <activity android:name=".activity.CarrosIntentActivity"></activity>
     </application>
 
 </manifest>
