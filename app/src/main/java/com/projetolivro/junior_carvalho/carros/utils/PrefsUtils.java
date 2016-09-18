@@ -19,4 +19,11 @@ public class PrefsUtils {
         return sp.getBoolean("PREF_CHECK_PUSH", false);
     }
 
+
+    public static boolean isCheckTypeNetWork(final Context context){
+        SharedPreferences spref  = PreferenceManager.getDefaultSharedPreferences(context);
+        return spref.getBoolean("PREF_TYPE_NETWORK", false);
+    }
+
+
 }

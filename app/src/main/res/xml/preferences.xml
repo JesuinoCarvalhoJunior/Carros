@@ -10,6 +10,18 @@
             android:summary="Receber alertas de Push sobre lançamentos de novos carros."
             android:title="Notificações"
             />
+        </PreferenceCategory>
+
+
+    <!--  Exibir tipo de Conexao      -->
+
+    <PreferenceCategory android:title="Tipo de conexão">
+
+        <CheckBoxPreference
+            android:key="PREF_TYPE_NETWORK"
+            android:summary="Exibir tipo de conexão."
+            android:title="Conexão"
+            />
     </PreferenceCategory>
 
 

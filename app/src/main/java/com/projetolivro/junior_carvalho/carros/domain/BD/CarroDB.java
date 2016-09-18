@@ -202,4 +202,20 @@ public class CarroDB extends SQLiteOpenHelper {
     }
 
 
+    public Carro findAllByNome(String nome) {
+     SQLiteDatabase db = getWritableDatabase();
+
+        try {
+            // "Select * from carro where nome=?"
+
+            Cursor c = db.query("carro", null, "nome = ?", new String[]{nome}, null, null,null);
+            List<Carro> list = toList(c);
+            return list.isEmpty() ? null : list.get(0);
+
+        } finally {
+            db.close();
+        }
+
+
+    }
 }

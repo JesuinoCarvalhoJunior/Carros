@@ -24,7 +24,7 @@ Versao %s<br><br>
 <a href="http://www.google.com.br"> http://www.google.com.br</a><br><br>
 <b>Júnior Carvalho</b>
 <br><br>
-	]]>
+]]>
 
 	</string>
     <string name="about_dialog_title">Informações</string>
@@ -49,10 +49,22 @@ Versao %s<br><br>
     <!-- L -->
     <string name="luxo">Luxo</string>
     <string name="latitudeLongitude">Lat / Lng</string>
+    <string name="leitor_codigo_barras">Leitor código barras</string>
 
     <!-- M -->
     <string name="mapa">Mapa</string>
     <string name="msg_alerta_permissao">Para utilizar este aplicativo, você precisa aceitar as permissões!</string>
+
+    <!-- menu_frag_mapa.xml -->
+    <string name="mapa_normal">Modo Normal</string>
+    <string name="mapa_satelite">Modo Satélite</string>
+    <string name="mapa_terreno">Modo Terreno</string>
+    <string name="mapa_hibrido">Modo Híbrido</string>
+    <string name="mapa_location_directions">Direções</string>
+    <string name="mapa_location_carro">Localização do Carro</string>
+    <string name="mapa_zoom_in">Zoom (+)</string>
+    <string name="mapa_zoom_out">Zoom (-)</string>
+
 
     <!-- N -->
     <string name="nav_drawer_username">Júnior Carvalho</string>
@@ -68,6 +80,11 @@ Versao %s<br><br>
     <string name="sobre_aparelho">Sobre aparelho</string>
     <string name="sair">Sair</string>
     <string name="share">Share</string>
+    <string name="scan">Scan</string>
+
+    <!-- T -->
+    <string name="type_network">Tipo de conexão</string>
+
 
     <!-- B -->
     <string name="check_batpercent">Percentual bateria</string>
@@ -76,6 +93,11 @@ Versao %s<br><br>
     <!-- V -->
     <string name="vazio" />
     <string name="video">Vídeo</string>
+
+    <string name="action_video_browser">Browser</string>
+    <string name="action_video_player">Vídeo Player</string>
+    <string name="action_video_videoview">VídeoView</string>
+
 
     <!-- TODO: Remover ou Alterar PlaceHolder text -->
     <string name="hello_blank_fragment">Hello Blank Fragment</string>
@@ -94,6 +116,11 @@ Versao %s<br><br>
     <string name="ACCESS_FINE_LOCATION">android.permission.ACCESS_FINE_LOCATION</string>
     <string name="READ_CONTACTS">android.permission.READ_CONTACTS</string>
     <string name="EDITAR_CONFIGURACAO_ANDROID">android.permission.WRITE_SETTINGS</string>
+    <string name="TIPOCONEXAOINTERNET">android.permission.ACCESS_NETWORK_STATE</string>
+
+    <string name="GPSCOARSELOCALIZACAO">android:name="android.permission.ACCESS_COARSE_LOCATION</string>
+    <string name="GPSFINELOCALIZACAO">android:name="android.permission.ACCESS_FINE_LOCATION</string>
+
 
 
 </resources>

@@ -18,7 +18,23 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <!-- Acesso sistema android -->
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- Acesso tipo conexao internet -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Acesso GPS -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Acesso obter localizacao por Wi Fi ou triangula de antenas -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <!-- Acesso Mapas V2 depende da OpenGL ES V2 -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true"/>
+
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <!--
+     Acesso scanner
+    <uses-permission android:name="com.google.zxing.client.android.SCAN" />
+    -->
     <!--
      indica qe o app faz bkp
       android:allowBackup="true"
@@ -34,6 +50,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
 
+        <!--Versao do Google Play Services -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- chave de acesso API Key criada na pagina google console "@string/API_KEY"  android:name="com.google.android.maps.v2.API_KEY" -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/API_KEY"/>
         <!--
          Chave unica para servico google
               registrada em: https://developer.android.com/intl/pt-br/google/backup/signup.html
@@ -41,6 +66,7 @@
               resultado abaixo
          https://play.google.com/apps/publish/GetBackupApiKey?p=com.projetolivro.junior_carvalho.carros
         -->
+
         <meta-data
             android:name="com.google.android.backup.api_key"
             android:value="@string/chave_backup" />
@@ -125,8 +151,50 @@
             </intent-filter>
         </activity>
         -->
+
+
         <activity android:name=".utils.Exibe_Perc_Bateria" />
-        <activity android:name=".activity.CarrosIntentActivity"></activity>
+        <activity android:name=".activity.CarrosIntentActivity">
+
+            <!-- Filtro para carros://r.com.livroandroid.carros/carros/* -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="carros" />
+            </intent-filter>
+            <!-- Filtro para carros://br.com.livroandroid.carros/carros/* -->
+
+            <intent-filter>
+                <action android:name="android.intent.action.PICK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="carros" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="http" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.VideoActivity"
+            android:parentActivityName=".activity.CarroActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.CarroActivity" />
+        </activity>
+        <activity
+            android:name=".activity.MapaActivity"
+            android:parentActivityName=".activity.CarroActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.CarroActivity" />
+        </activity>
     </application>
 
 </manifest>

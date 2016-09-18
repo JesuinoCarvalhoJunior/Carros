@@ -1,8 +1,10 @@
 package com.projetolivro.junior_carvalho.carros.activity;
 
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -16,16 +18,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.projetolivro.junior_carvalho.carros.R;
 
+
 import com.projetolivro.junior_carvalho.carros.activity.prefs.ConfiguracoesActivity;
 import com.projetolivro.junior_carvalho.carros.activity.prefs.ConfiguracoesV11Activity;
-
 import com.projetolivro.junior_carvalho.carros.utils.Exibe_Perc_Bateria;
 import com.projetolivro.junior_carvalho.carros.utils.SoftHardware;
 
 import livroandroid.lib.utils.AndroidUtils;
+import livroandroid.lib.utils.IntentUtils;
 
 /**
  * Created by Junior_Carvalho on 25/03/2016.
@@ -49,12 +53,11 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
     }
 
     /**
-     A configuracao do menu lateral é feito aqi na base activity para
-     que seja possivel reutilizar o codigo no projeto
-     *
-     configura nav drawer
-     <p>Metodo ativa a ToolBar</p>
-
+     * A configuracao do menu lateral é feito aqi na base activity para
+     * que seja possivel reutilizar o codigo no projeto
+     * <p>
+     * configura nav drawer
+     * <p>Metodo ativa a ToolBar</p>
      */
 
     protected void setUpToolBar() {
@@ -110,7 +113,7 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
 
     // trata evento nos itens do menu lateral
     private void onNavDrawerItemSelected(MenuItem menuItem) {
-
+        final Context context = this;
         switch (menuItem.getItemId()) {
 
             case R.id.nav_item_carros_todos:
@@ -164,12 +167,12 @@ public class BaseActivity extends livroandroid.lib.activity.BaseActivity {
                 }
 
                 break;
+
             case R.id.nav_item_sobreaparelho:
                 //InfoHardsoftware();
 
                 Intent i = new Intent(getContext(), Exibe_Perc_Bateria.class);
                 startActivity(i);
-
                 break;
 
             case R.id.nav_item_sairaplicacao:

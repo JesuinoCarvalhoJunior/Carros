@@ -1,6 +1,7 @@
 package com.projetolivro.junior_carvalho.carros.fragments;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -47,7 +48,6 @@ public class CarrosFragment extends BaseFragment {
 
     private ActionMode actionMode;
 
-
     //  private CarroOnClickListener carroOnClickListener;
 
     // metodo para instanciar o fragment da lista de carros com tipo correto
@@ -60,6 +60,7 @@ public class CarrosFragment extends BaseFragment {
         CarrosFragment f = new CarrosFragment();
         f.setArguments(args);
         return f;
+
     }
 
     @Override

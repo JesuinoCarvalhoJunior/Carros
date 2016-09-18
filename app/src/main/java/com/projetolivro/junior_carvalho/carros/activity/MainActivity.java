@@ -16,6 +16,7 @@ import android.view.View;
 import com.projetolivro.junior_carvalho.carros.R;
 import com.projetolivro.junior_carvalho.carros.adapter.TabsAdapter;
 import com.projetolivro.junior_carvalho.carros.fragments.AboutDialog;
+import com.projetolivro.junior_carvalho.carros.utils.GetTypeNetwork;
 import com.projetolivro.junior_carvalho.carros.utils.PrefsUtils;
 
 import livroandroid.lib.utils.Prefs;
@@ -49,8 +50,6 @@ public class MainActivity extends BaseActivity {
         // FAB
         final boolean chk = PrefsUtils.isCheckPushOn(this);
         findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
 
@@ -87,6 +86,17 @@ public class MainActivity extends BaseActivity {
             AboutDialog.showAbout(getSupportFragmentManager());
             return true;
         }
+        if (id == R.id.type_network) {
+
+            final boolean chkType = PrefsUtils.isCheckTypeNetWork(this);
+            if (!chkType) {
+                toast("Serviço não habilitado!");
+            } else
+                toast(GetTypeNetwork.getTypeNetwork(this));
+            return true;
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -132,7 +142,7 @@ public class MainActivity extends BaseActivity {
                 Prefs.setInteger(getContext(), "tabIdx", viewPager.getCurrentItem());
 
                 // faz o bkp da preferencia
-                 backupManager.dataChanged();
+                backupManager.dataChanged();
 
             }
 
